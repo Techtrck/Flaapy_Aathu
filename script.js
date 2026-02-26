@@ -27,11 +27,11 @@ let score = 0;
 let highScore = localStorage.getItem('flappyFaceHighScore') || 0;
 
 // Game constants
-const GRAVITY = 0.25;
-const JUMP_STRENGTH = -5.5;
+const GRAVITY = 0.22;
+const JUMP_STRENGTH = -5.2;
 const PIPE_SPEED = 2.5;
-const PIPE_SPAWN_INTERVAL = 1500; // ms
-const PIPE_GAP = 180;
+const PIPE_SPAWN_INTERVAL = 2200; // Increased interval makes pipes further apart
+const PIPE_GAP = 190; // Slightly larger gap for better playability
 const BIRD_SIZE = 50;
 
 // Game objects
