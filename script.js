@@ -239,18 +239,25 @@ function jump() {
     if (gameState === GAME_STATE.READY) {
         startGame();
         bird.velocity = JUMP_STRENGTH;
-        playSound(jumpSound);
+        playSound(jumpSound, 400); // Shortened jump sound to 400ms
     } else if (gameState === GAME_STATE.PLAYING) {
         bird.velocity = JUMP_STRENGTH;
-        playSound(jumpSound);
+        playSound(jumpSound, 400); // Shortened jump sound to 400ms
     } else if (gameState === GAME_STATE.GAME_OVER) {
         resetGame();
     }
 }
 
-function playSound(audio) {
+function playSound(audio, duration = 0) {
     audio.currentTime = 0;
     audio.play().catch(e => console.log("Sound play failed:", e));
+
+    if (duration > 0) {
+        setTimeout(() => {
+            audio.pause();
+            audio.currentTime = 0;
+        }, duration);
+    }
 }
 
 function startGame() {
@@ -263,17 +270,7 @@ function startGame() {
 
 function endGame() {
     gameState = GAME_STATE.GAME_OVER;
-    failSound.currentTime = 0;
-    failSound.play().catch(e => console.log("Sound play failed:", e));
-
-    // Stop the sound after a short duration (1.2 seconds) to make it "little small"
-    setTimeout(() => {
-        if (gameState === GAME_STATE.GAME_OVER) {
-            failSound.pause();
-            failSound.currentTime = 0;
-        }
-    }, 1200);
-
+    playSound(failSound, 1000); // Shortened failure sound to 1.0 second
     gameOverScreen.classList.remove('hidden');
     finalScoreText.innerText = score;
 
