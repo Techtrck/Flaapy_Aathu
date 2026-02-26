@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Face - The Ultimate Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="A premium Flappy Bird clone featuring your favorite face. Jump through obstacles and set a high score!">
+</head>
+
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="ui-layer">
+            <div id="score-board">0</div>
+
+            <div id="start-screen" class="overlay">
+                <h1>FLAPPY FACE</h1>
+                <p>Click anywhere or press Space to Jump</p>
+                <div class="hint">Wait for the first jump to start</div>
+            </div>
+
+            <div id="game-over" class="overlay hidden">
+                <h2>GAME OVER</h2>
+                <div class="final-score-text">Final Score: <span id="final-score">0</span></div>
+                <div class="high-score-text">High Score: <span id="high-score">0</span></div>
+                <p>Click or Press Space to Restart</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
