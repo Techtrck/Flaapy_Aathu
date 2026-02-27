@@ -10,10 +10,13 @@ const highScoreText = document.getElementById('high-score');
 const assetImg = new Image();
 assetImg.src = 'asset.jpg';
 
-const jumpSound = new Audio('VID_20260226_112853.mp4');
+const birdImg = new Image();
+birdImg.src = 'asset1.jpg';
+
+const jumpSound = new Audio('bhaai.mp3');
 const failSound = new Audio('telugu-screaming.mp3');
 jumpSound.volume = 0.5;
-failSound.volume = 0.7;
+failSound.volume = 0.6;
 
 // Game state constants
 const GAME_STATE = {
@@ -149,8 +152,8 @@ function draw() {
 
     // Draw background (subtle gradient)
     const grd = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    grd.addColorStop(0, '#020617');
-    grd.addColorStop(1, '#083344');
+    grd.addColorStop(0, '#000000');
+    grd.addColorStop(1, '#01131a');
     ctx.fillStyle = grd;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -213,7 +216,7 @@ function draw() {
     ctx.beginPath();
     ctx.arc(0, 0, bird.size / 2, 0, Math.PI * 2);
     ctx.clip();
-    ctx.drawImage(assetImg, -bird.size / 2, -bird.size / 2, bird.size, bird.size);
+    ctx.drawImage(birdImg, -bird.size / 2, -bird.size / 2, bird.size, bird.size);
 
     // Glow effect
     ctx.restore();
@@ -239,10 +242,10 @@ function jump() {
     if (gameState === GAME_STATE.READY) {
         startGame();
         bird.velocity = JUMP_STRENGTH;
-        playSound(jumpSound, 400); // Shortened jump sound to 400ms
+        playSound(jumpSound, 1000); // Shortened jump sound to 400ms
     } else if (gameState === GAME_STATE.PLAYING) {
         bird.velocity = JUMP_STRENGTH;
-        playSound(jumpSound, 400); // Shortened jump sound to 400ms
+        playSound(jumpSound, 1000); // Shortened jump sound to 400ms
     } else if (gameState === GAME_STATE.GAME_OVER) {
         resetGame();
     }
